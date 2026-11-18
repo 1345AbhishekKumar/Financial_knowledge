@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { gitConfig } from '@/lib/shared';
 
 const navLinks = [
   { label: 'Finance', href: '/docs/finance' },
@@ -127,7 +128,7 @@ export default function Layout({ children }: LayoutProps<'/'>) {
                 items: [
                   ['Fumadocs', 'https://fumadocs.dev'],
                   ['Notebook layout', 'https://fumadocs.dev/docs/ui/layouts/notebook'],
-                  ['GitHub', 'https://github.com/fuma-nama/fumadocs'],
+                  ['GitHub', `https://github.com/${gitConfig.user}/${gitConfig.repo}`],
                 ],
               },
             ].map((col) => (
