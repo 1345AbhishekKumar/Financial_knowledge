@@ -1,0 +1,6 @@
+{
+  "title": "Microeconomics",
+  "description": "Decisions of individuals and firms — supply, demand, elasticity, and market structure.",
+  "icon": "Scale",
+  "pages": ["index", "supply-demand"]
+}

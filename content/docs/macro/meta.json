@@ -1,0 +1,6 @@
+{
+  "title": "Macroeconomics",
+  "description": "Economies as a whole — GDP, inflation, unemployment, growth, and policy.",
+  "icon": "Globe",
+  "pages": ["index", "gdp-and-inflation"]
+}

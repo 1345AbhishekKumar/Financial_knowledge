@@ -1,0 +1,64 @@
+---
+title: Compound interest
+description: Why starting early beats saving more — the math behind “money makes money”.
+---
+
+Compound interest is interest earned on interest. Each period, your balance
+grows — and the next period's growth is calculated on the **new, larger**
+balance. Time does the heavy lifting.
+
+## The formula
+
+```text
+A = P × (1 + r/n) ^ (n × t)
+
+P = starting amount      r = annual rate
+n = compounds per year   t = years
+```
+
+## Worked example
+
+$1,000 invested once at 7% annual return, compounded yearly:
+
+| Year | Balance |
+| ---- | ------- |
+| 0 | $1,000.00 |
+| 5 | $1,402.55 |
+| 10 | $1,967.15 |
+| 20 | $3,869.68 |
+| 30 | $7,612.26 |
+
+<Callout type="info">
+  Nothing was added after year zero. The extra $6,612 is purely the
+  balance compounding on itself.
+</Callout>
+
+## Compute it yourself
+
+```js
+function compound(principal, rate, compoundsPerYear, years) {
+  return principal * (1 + rate / compoundsPerYear) ** (compoundsPerYear * years);
+}
+
+console.log(compound(1000, 0.07, 1, 30).toFixed(2));
+// "7612.26"
+```
+
+## Starting early vs saving more
+
+| Saver | Monthly | Years | Total paid in | Final balance* |
+| ----- | ------- | ----- | ------------- | -------------- |
+| Early | $200 | 40 | $96,000 | ≈ $525,000 |
+| Late | $400 | 20 | $96,000 | ≈ $245,000 |
+
+\*At 7% annual return. Same money in, wildly different money out —
+that gap is compounding.
+
+## Next notebook
+
+<Cards>
+  <Card
+    title="Budgeting basics"
+    href="/docs/budgeting-basics"
+  />
+</Cards>

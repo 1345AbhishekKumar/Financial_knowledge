@@ -1,0 +1,84 @@
+---
+title: Supply & demand
+description: The core model — how prices and quantities are set, with worked shifts.
+---
+
+Supply and demand is the workhorse model of microeconomics. Demand describes
+what buyers want at each price; supply describes what sellers offer. Where they
+meet, the market clears.
+
+## The curves
+
+| Price | Quantity demanded | Quantity supplied | Result |
+| ----- | ---------------- | ---------------- | ------ |
+| $10 | 100 | 40 | Shortage of 60 → price rises |
+| $6 | 60 | 60 | **Equilibrium** |
+| $3 | 20 | 85 | Surplus of 65 → price falls |
+
+At equilibrium, quantity demanded equals quantity supplied — no pressure for
+the price to move.
+
+## Shifting vs moving along
+
+The most common mistake is moving along a curve when you meant to shift it.
+
+- **Movement along** — a change in the good's own price
+- **Shift of the curve** — anything *other* than its own price
+
+<Callout type="info">
+  Rainfall, taxes, consumer income, the price of inputs, and the number of
+  sellers all *shift* curves. The good's own price never does.
+</Callout>
+
+## Shifters
+
+| Curve shifts right when… | Because… |
+| ----------------------- | -------- |
+| Consumer income rises (normal good) | More demand at every price |
+| Input costs fall | Production is cheaper at every output |
+| More sellers enter | More supply at every price |
+| A substitute gets pricier | Buyers switch toward this good |
+
+## Compute the new equilibrium
+
+Two linear curves. Change a shifter, solve for the crossing point again.
+
+```js
+// demand: Qd = a - b·P     supply: Qs = c + d·P
+function equilibrium(demand, supply) {
+  // solve a - b·P = c + d·P  →  P = (a - c) / (b + d)
+  const price = (demand.a - supply.c) / (demand.b + supply.d);
+  const quantity = demand.a - demand.b * price;
+  return { price, quantity };
+}
+
+console.log(equilibrium({ a: 120, b: 10 }, { c: 0, d: 10 }));
+// { price: 6, quantity: 60 }
+```
+
+Run it again with `{ a: 150, b: 10 }` — demand shifted right, and you get a
+higher price **and** a higher quantity traded.
+
+## Tax and deadweight loss
+
+A per-unit tax of $2 wedges the two curves apart:
+
+| Price | Buyer pays | Seller receives |
+| ----- | ---------- | --------------- |
+| Before tax | $6 | $6 |
+| After tax | $7 | $5 |
+
+Total tax revenue is $2 × quantity — and the volume that no longer trades is
+the **deadweight loss**.
+
+<Callout type="warn">
+  Tax revenue is not the cost of a tax. The deadweight loss — the trades that
+  stop happening at all — is the part with no offsetting benefit.
+</Callout>
+
+## Next module
+
+<Cards>
+  <Card title="Macroeconomics" href="/docs/macro" />
+  <Card title="Stocks & Markets" href="/docs/stocks" />
+</Cards>

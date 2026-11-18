@@ -1,0 +1,6 @@
+{
+  "title": "Stocks & Markets",
+  "description": "Equities, market mechanics, valuation, and portfolio theory.",
+  "icon": "TrendingUp",
+  "pages": ["index", "market-basics"]
+}

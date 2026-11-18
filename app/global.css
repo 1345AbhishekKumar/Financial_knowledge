@@ -2,8 +2,140 @@
 @import 'fumadocs-ui/css/neutral.css';
 @import 'fumadocs-ui/css/preset.css';
 
+@theme {
+  /* Ramp — editorial finance desk */
+  --color-highlighter-yellow: #e4f222;
+  --color-ink: #0c0a08;
+  --color-obsidian: #1a1919;
+  --color-paper: #ffffff;
+  --color-bone: #f4f2f0;
+  --color-ash: #6d6c6b;
+  --color-hairline: #e5e7eb;
+  --color-smoke: #d3d3d3;
+
+  --font-lausanne: 'Inter', 'IBM Plex Sans', ui-sans-serif, system-ui,
+    -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+:root {
+  --surface-canvas: #f4f2f0;
+  --surface-card: #ffffff;
+  --surface-inverted: #1a1919;
+  --surface-action: #e4f222;
+}
+
+/* ============ Ramp — docs system ============
+   Light theme follows the Ramp palette through the sanctioned
+   Fumadocs variables. Dark mode keeps the stock Fumadocs theme
+   so the theme toggle stays fully usable. */
+:root {
+  color-scheme: light;
+  --color-fd-background: #f4f2f0;
+  --color-fd-foreground: #0c0a08;
+  --color-fd-muted: #ffffff;
+  --color-fd-muted-foreground: #6d6c6b;
+  --color-fd-popover: #ffffff;
+  --color-fd-popover-foreground: #0c0a08;
+  --color-fd-card: #ffffff;
+  --color-fd-card-foreground: #0c0a08;
+  --color-fd-border: #e5e7eb;
+  --color-fd-primary: #0c0a08;
+  --color-fd-primary-foreground: #ffffff;
+  --color-fd-secondary: #f4f2f0;
+  --color-fd-secondary-foreground: #0c0a08;
+  --color-fd-accent: #ffffff;
+  --color-fd-accent-foreground: #0c0a08;
+  --color-fd-ring: #0c0a08;
+}
+
+/* Dark mode — stock Fumadocs dark surfaces, placed after :root
+   so the theme toggle works again. Ramp light rules below are
+   all scoped to html:not(.dark) and stay out of the way. */
+.dark {
+  color-scheme: dark;
+  --color-fd-background: hsl(0, 0%, 7.04%);
+  --color-fd-foreground: hsl(0, 0%, 92%);
+  --color-fd-muted: hsl(0, 0%, 12.9%);
+  --color-fd-muted-foreground: hsla(0, 0%, 70%, 0.8);
+  --color-fd-popover: hsl(0, 0%, 11.6%);
+  --color-fd-popover-foreground: hsl(0, 0%, 86.9%);
+  --color-fd-card: hsl(0, 0%, 9.8%);
+  --color-fd-card-foreground: hsl(0, 0%, 98%);
+  --color-fd-border: hsla(0, 0%, 40%, 20%);
+  --color-fd-primary: hsl(0, 0%, 98%);
+  --color-fd-primary-foreground: hsl(0, 0%, 9%);
+  --color-fd-secondary: hsl(0, 0%, 12.9%);
+  --color-fd-secondary-foreground: hsl(0, 0%, 92%);
+  --color-fd-accent: hsla(0, 0%, 40.9%, 30%);
+  --color-fd-accent-foreground: hsl(0, 0%, 90%);
+  --color-fd-ring: hsl(0, 0%, 54.9%);
+}
+
+/* Code blocks in light mode — black text on white, hairline
+   border, 16px radius, no shadow */
+html:not(.dark) figure.shiki {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  box-shadow: none;
+}
+
+html:not(.dark) figure.shiki pre.shiki,
+html:not(.dark) pre.shiki {
+  background-color: #ffffff !important;
+  color: #0c0a08;
+}
+
+/* Inline code in light mode — ink on white with hairline border */
+html:not(.dark) .prose :not(pre) > code {
+  background-color: #ffffff;
+  color: #0c0a08;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 1px 6px;
+  font-weight: 400;
+}
+
+html:not(.dark) .prose :not(pre) > code::before,
+html:not(.dark) .prose :not(pre) > code::after {
+  content: none;
+}
+
+/* Docs cards in light mode — 16px radius, no shadow */
+html:not(.dark) .prose [data-card] {
+  border-radius: 16px;
+  box-shadow: none;
+}
+
+html:not(.dark) .prose [data-card] [class*='shadow-'] {
+  box-shadow: none;
+}
+
+/* Sidebar / TOC active markers — the highlighter signal */
+html:not(.dark) #nd-sidebar [data-active='true']::before,
+html:not(.dark) #nd-toc [data-active='true']::before {
+  background-color: #e4f222;
+}
+
 html {
   scrollbar-gutter: stable;
+}
+
+body {
+  font-family: var(--font-lausanne);
+  font-weight: 400;
+  font-feature-settings: 'ss01' on;
+  -webkit-font-smoothing: antialiased;
+}
+
+html:not(.dark) body {
+  background-color: #f4f2f0;
+  color: #0c0a08;
+}
+
+::selection {
+  background: #e4f222;
+  color: #0c0a08;
 }
 
 html > body[data-scroll-locked] {

@@ -1,0 +1,62 @@
+---
+title: Budgeting basics
+description: The 50/30/20 budget — give every unit of income a job before the month starts.
+---
+
+A budget is not a diet. It is a plan that tells each unit of income where to
+go **before** the month starts, so leftover money is a decision, not an
+accident.
+
+## The 50/30/20 split
+
+Divide take-home pay into three buckets:
+
+| Bucket | Share | Covers |
+| ------ | ----- | ------ |
+| Needs | 50% | Rent, food, transport, minimum debt payments |
+| Wants | 30% | Dining out, hobbies, subscriptions |
+| Future | 20% | Emergency fund, investing, extra debt payoff |
+
+<Callout type="info">
+  Percentages are a starting point. High-rent cities routinely push needs
+  past 50% — borrow from wants first, never from future.
+</Callout>
+
+## Worked example
+
+Take-home pay of **$4,000 / month**:
+
+| Bucket | Math | Amount |
+| ------ | ---- | ------ |
+| Needs | $4,000 × 0.50 | $2,000 |
+| Wants | $4,000 × 0.30 | $1,200 |
+| Future | $4,000 × 0.20 | $800 |
+
+## Compute it yourself
+
+```js
+function budget50_30_20(takeHomePay) {
+  return {
+    needs: takeHomePay * 0.5,
+    wants: takeHomePay * 0.3,
+    future: takeHomePay * 0.2,
+  };
+}
+
+console.log(budget50_30_20(4000));
+// { needs: 2000, wants: 1200, future: 800 }
+```
+
+<Callout type="warn">
+  A budget only works if you review it. Ten minutes every Sunday beats
+  three hours at month-end.
+</Callout>
+
+## Next notebook
+
+<Cards>
+  <Card
+    title="Compound interest"
+    href="/docs/compound-interest"
+  />
+</Cards>

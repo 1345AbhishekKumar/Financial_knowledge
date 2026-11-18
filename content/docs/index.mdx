@@ -1,13 +1,83 @@
 ---
-title: Hello World
-description: Your first document
+title: Ledger
+description: Finance notebooks — four modules, one idea per page, with math you can re-run.
 ---
 
-Welcome to the docs! You can start writing documents in `/content/docs`.
+Every topic in finance and economics is built from a handful of models. This
+desk organises them into **four modules**, and every notebook covers exactly
+one idea — with a worked example and math you can re-run yourself.
 
-## What is Next?
+## Modules
 
 <Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.dev" />
+  <Card
+    title="Finance"
+    href="/docs/finance"
+    description="Planning, budgeting, and the math behind money decisions."
+  />
+  <Card
+    title="Stocks & Markets"
+    href="/docs/stocks"
+    description="Equities, market mechanics, valuation, and portfolio theory."
+  />
+  <Card
+    title="Microeconomics"
+    href="/docs/micro"
+    description="Decisions of individuals and firms — supply, demand, elasticity."
+  />
+  <Card
+    title="Macroeconomics"
+    href="/docs/macro"
+    description="Economies as a whole — GDP, inflation, unemployment, policy."
+  />
 </Cards>
+
+## How a notebook is structured
+
+1. **The idea** — one concept, plain language, no jargon without a definition
+2. **The example** — real numbers in tables you can follow row by row
+3. **The math** — a short snippet that computes the result, so you can change
+   the inputs and re-run it
+
+## Suggested reading order
+
+| Step | Module | Notebook |
+| ---- | ------ | -------- |
+| 1 | Microeconomics | Supply & demand |
+| 2 | Macroeconomics | GDP & inflation |
+| 3 | Finance | Budgeting basics |
+| 4 | Finance | Compound interest |
+| 5 | Stocks & Markets | Market basics |
+
+Micro comes before macro because macro aggregates what micro explains. Finance
+comes after both because it applies them. Markets come last because they
+require the underlying economics first.
+
+<Callout type="info">
+  Notebooks are independent — read in any order. But if you want one coherent
+  path, the table above is it.
+</Callout>
+
+## Writing a notebook
+
+Add a `.mdx` file inside the module folder you want, then list it in that
+folder's `meta.json`:
+
+```mdx
+---
+title: Net present value
+description: Discounting future cash flows back to today.
+---
+
+## The idea
+
+NPV values an investment by discounting every future cash flow back to today
+at a rate that reflects its risk.
+```
+
+Your notebook then appears in the sidebar automatically, joins the search
+index, and gets its own `llms.mdx` text and OG image.
+
+<Callout type="warn">
+  Educational content only. Nothing here is financial or investment advice.
+</Callout>

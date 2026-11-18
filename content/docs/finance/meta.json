@@ -1,0 +1,6 @@
+{
+  "title": "Finance",
+  "description": "Personal and corporate finance — planning, budgeting, and the math behind money decisions.",
+  "icon": "Wallet",
+  "pages": ["index", "budgeting-basics", "compound-interest"]
+}

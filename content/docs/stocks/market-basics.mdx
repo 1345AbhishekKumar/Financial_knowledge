@@ -1,0 +1,66 @@
+---
+title: Market basics
+description: What a share actually buys you, and how a price forms.
+---
+
+Buying a share means buying a fractional claim on a business's future cash
+flows. Everything else — the ticker, the chart, the "price" — is a summary of
+what thousands of people currently believe those flows are worth.
+
+## What you own
+
+| Shareholder right | What it means |
+| ----------------- | ------------- |
+| Residual claim | Paid last, after bondholders and creditors |
+| Voting right | One vote per share on board and major decisions |
+| Dividend entitlement | A share of distributions the board declares |
+| Liquidation right | A claim on remaining assets if the firm winds up |
+
+<Callout type="info">
+  The legal claim is small and constant. The value is entirely in the cash
+  flows you expect the business to produce.
+</Callout>
+
+## How a price forms
+
+A price is the point where the marginal buyer and marginal seller agree. Behind
+that number sit two forces:
+
+1. **Intrinsic value** — cash flows discounted back at an appropriate rate
+2. **Market sentiment** — what everyone else believes today
+
+The gap between them is the entire field of market study.
+
+## Order types
+
+| Order | Instruction | Use when |
+| ----- | ----------- | -------- |
+| Market | Buy now at any available price | You need the fill, not the price |
+| Limit | Buy only at your price or better | You refuse to overpay |
+| Stop | Becomes a market order at a trigger | You need to cut a loss automatically |
+
+## Compute it yourself
+
+```js
+// Intrinsic value as the present value of 3 years of cash flow
+// plus a terminal value (here: a perpetuity growing at g).
+function intrinsicValue(cf, rate, growth) {
+  const pv = cf.reduce((sum, flow, i) => sum + flow / (1 + rate) ** i, 0);
+  const terminal = cf[cf.length - 1] * (1 + growth) / (rate - growth);
+  return pv + terminal / (1 + rate) ** cf.length;
+}
+
+console.log(intrinsicValue([100, 100, 100], 0.08, 0.03).toFixed(2));
+```
+
+<Callout type="warn">
+  A single discount rate assumption drives the entire answer. Treat any
+  intrinsic value as a range, never a precise figure.
+</Callout>
+
+## Next module
+
+<Cards>
+  <Card title="Microeconomics" href="/docs/micro" />
+  <Card title="Macroeconomics" href="/docs/macro" />
+</Cards>

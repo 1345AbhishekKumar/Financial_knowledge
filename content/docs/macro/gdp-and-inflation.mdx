@@ -1,0 +1,91 @@
+---
+title: GDP & inflation
+description: Measuring output, measuring prices, and why the real and nominal lines differ.
+---
+
+Macroeconomics runs on two numbers: how much an economy produces (GDP) and how
+much things cost (inflation). Nearly every macro conclusion is a claim about
+how those two interact.
+
+## Nominal vs real
+
+GDP can be counted in current prices (**nominal**) or in last year's prices
+(**real**). The real series removes price changes, so it measures volume.
+
+| Year | Nominal GDP | Price index | Real GDP |
+| ---- | ----------- | ----------- | -------- |
+| 2020 | $1,000B | 100 | $1,000B |
+| 2021 | $1,060B | 106 | $1,000B |
+
+Output did not grow at all in 2021 — the entire 6% nominal rise is the price
+level. This is why headline GDP growth is misleading during inflationary periods.
+
+## GDP components
+
+GDP equals spending from four places — by identity, always:
+
+| Component | What it is |
+| --------- | ---------- |
+| C — Consumption | Household spending |
+| I — Investment | Business equipment, structures, inventory |
+| G — Government | Public spending and transfers |
+| NX — Net exports | Exports minus imports |
+
+<Callout type="info">
+  The identity is arithmetic, not a theory. A recession is commonly defined
+  as two consecutive quarters of falling *real* GDP.
+</Callout>
+
+## Measuring inflation
+
+The Consumer Price Index tracks the cost of a fixed basket of goods. Inflation
+is the rate of change of that index:
+
+| Period | CPI | Inflation |
+| ------ | --- | --------- |
+| Q1 | 100 | — |
+| Q2 | 102 | 2.0% |
+| Q3 | 103 | 0.98% |
+
+Note the compounding: inflation is a rate of change, so 5% inflation for two
+years is 10.25%, not 10%.
+
+## Compute it yourself
+
+```js
+// Real GDP from nominal GDP and a price index (base = 100)
+function realGDP(nominalGDP, priceIndex) {
+  return (nominalGDP / (priceIndex / 100)).toFixed(2);
+}
+
+// Compounded inflation across periods
+function compoundInflation(rates) {
+  return (rates.reduce((acc, r) => acc * (1 + r), 1) - 1) * 100;
+}
+
+console.log(realGDP(1060, 106));          // "1000.00"
+console.log(compoundInflation([0.05, 0.05]).toFixed(2)); // "10.25"
+```
+
+## Demand-pull vs cost-push
+
+| Type | Cause | Signature |
+| ---- | ----- | --------- |
+| Demand-pull | Spending outruns capacity | Output rises, unemployment falls |
+| Cost-push | Input costs (energy, wages) rise | Output falls **and** prices rise |
+
+The distinction matters for policy: demand-pull inflation can be cooled by
+raising rates; cost-push inflation cannot, and doing so worsens the output loss.
+
+<Callout type="warn">
+  A target of 2% inflation is a *target*, not a promise. Central banks respond
+  with lags of months, and shocks rarely respect the target.
+</Callout>
+
+## Related modules
+
+<Cards>
+  <Card title="Microeconomics" href="/docs/micro" />
+  <Card title="Finance" href="/docs/finance" />
+  <Card title="Stocks & Markets" href="/docs/stocks" />
+</Cards>
